@@ -75,6 +75,7 @@ int main() {
 	for (int i = 0; i < ycr.size(); i++){
 		ycr[i] = 0.5 * (yfr[i] + yfr[i + 1]);
 	}
+	// Escritura de la información:
 	ofstream file;
 	file.open("Carasx_malla.dat");
 		for (int i = 0; i < xfr.size(); i++){
