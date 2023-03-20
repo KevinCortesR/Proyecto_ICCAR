@@ -11,17 +11,17 @@ int main(){
 	// Recopilación de información:
 	ifstream fin;
 	fin.open("Celdasx_malla.dat");
-		float valor;
-		vector<float> xcr;
+		double valor;
+		vector<double> xcr;
 		while (fin >> valor){
 			xcr.push_back(valor);
 		}
 	fin.close();
 	// Condiciones de frontera:
-	float BC_E = 15; // [°C] Condición Dirichlet en la frontera este (Fila 1 Fronteras_ctes.dat)
-	float BC_N = 0; // [°C / m] Condición Neumann en la frontera norte (Fila 2 Fronteras_ctes.dat)
-	float BC_W = -5; // [°C] Condición Dirichlet en la frontera oeste (Fila 3 Fronteras_ctes.dat)
-	vector<float> BC_S(xcr.size()); // [°C] Condición Dirichlet en la frontera sur
+	double BC_E = 15; // [°C] Condición Dirichlet en la frontera este (Fila 1 Fronteras_ctes.dat)
+	double BC_N = 0; // [°C / m] Condición Neumann en la frontera norte (Fila 2 Fronteras_ctes.dat)
+	double BC_W = -5; // [°C] Condición Dirichlet en la frontera oeste (Fila 3 Fronteras_ctes.dat)
+	vector<double> BC_S(xcr.size()); // [°C] Condición Dirichlet en la frontera sur
 	for (int i = 0; i < BC_S.size(); i++){
 		BC_S[i] = -5 + 20 * pow((xcr[i] / xcr[xcr.size() - 1]), 2) + 20 * sin(4 * M_PI * xcr[i] / xcr[xcr.size() - 1]);
 	}

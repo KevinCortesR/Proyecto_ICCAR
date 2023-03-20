@@ -7,10 +7,10 @@
 using namespace std;
 
 // Función generadora de la matriz de coeficientes de los vecinos y de la celda y del vector de términos fuente:
-vector<vector<float>> Coeficientes(vector<float> &xcr, vector<float> &ycr, vector<float> &xfr, vector<float> &yfr, vector<float> &kappa, float B){
+vector<vector<double>> Coeficientes(vector<double> &xcr, vector<double> &ycr, vector<double> &xfr, vector<double> &yfr, vector<double> &kappa, double B){
 	int nxcr = xcr.size();
 	int nycr = ycr.size();
-	vector<vector<float>> Mat_A(nxcr * nycr, vector<float> (6)); // 0: A_P, 1: A_E, 2: A_N, 3: A_W, 4: A_S, 5: Q_P
+	vector<vector<double>> Mat_A(nxcr * nycr, vector<double> (6)); // 0: A_P, 1: A_E, 2: A_N, 3: A_W, 4: A_S, 5: Q_P
 	for (int j = 0; j < nycr; j++){
 		for (int i = 0; i < nxcr; i++){
 			int nc = j * nxcr + i;
@@ -92,17 +92,17 @@ vector<vector<float>> Coeficientes(vector<float> &xcr, vector<float> &ycr, vecto
 }
 
 // La función Gauss-Seidel barre la malla de izquierda a derecha yendo de abajo hacia arriba
-vector<vector<float>> Gauss_Seidel(float BC_N, vector<float> &BC_S, float BC_W, float BC_E, vector<float> &xcr, vector<float> &ycr, vector<vector<float>> &Mat_A, vector<float> &Vec_Q, vector<float> &T, float epsilon){
+vector<vector<double>> Gauss_Seidel(double BC_N, vector<double> &BC_S, double BC_W, double BC_E, vector<double> &xcr, vector<double> &ycr, vector<vector<double>> &Mat_A, vector<double> &Vec_Q, vector<double> &T, double epsilon){
 	int it = 0;
-	float Res_norm = epsilon;
-	float Res_norm_ant = 0;
-	vector<float> it_V;
-	vector<float> Rn_V;
+	double Res_norm = 10 * epsilon;
+	double Res_norm_ant = 0;
+	vector<double> it_V;
+	vector<double> Rn_V;
 	int nxcr = xcr.size();
 	int nycr = ycr.size();
 	while (Res_norm >= epsilon){
-		float R = 0;
-		float F = 0;
+		double R = 0;
+		double F = 0;
 		for (int j = 0; j < nycr; j++){
 			for (int i = 0; i < nxcr; i++){
 				int nc = j * nxcr + i;
@@ -184,7 +184,7 @@ vector<vector<float>> Gauss_Seidel(float BC_N, vector<float> &BC_S, float BC_W, 
 		it_V[it - 1] = it;
 		Rn_V[it - 1] = Res_norm;
 		cout << "Iteración " << it << " con Residual Normalizado: " << Res_norm << endl;
-		if ((Res_norm_ant - Res_norm) < 1e-8 && (Res_norm_ant - Res_norm) >= 0){
+		if ((Res_norm_ant - Res_norm) < 1e-9 && (Res_norm_ant - Res_norm) >= 0){
 			break;
 		}
 		else if ((Res_norm_ant - Res_norm) < 0 && it > 1000){
@@ -200,7 +200,7 @@ vector<vector<float>> Gauss_Seidel(float BC_N, vector<float> &BC_S, float BC_W, 
 	else{
 		tam_max = tam_it_V;
 	}
-	vector<vector<float>> Result(tam_max, vector<float> (3)); // 0: T, 1: it_V, 2: Rn_V
+	vector<vector<double>> Result(tam_max, vector<double> (3)); // 0: T, 1: it_V, 2: Rn_V
 	for (int i = 0; i < T.size(); i++){
 		Result[i][0] = T[i];
 	}
@@ -215,70 +215,70 @@ int main(){
 	// Recopilación de información:
 	ifstream fin;
 	fin.open("Celdasx_malla.dat");
-		float valor;
-		vector<float> xcr;
+		double valor;
+		vector<double> xcr;
 		while (fin >> valor){
 			xcr.push_back(valor);
 		}
 	fin.close();
 	fin.open("Celdasy_malla.dat");
 		valor = 0;
-		vector<float> ycr;
+		vector<double> ycr;
 		while (fin >> valor){
 			ycr.push_back(valor);
 		}
 	fin.close();
 	fin.open("Carasx_malla.dat");
 		valor = 0;
-		vector<float> xfr;
+		vector<double> xfr;
 		while (fin >> valor){
 			xfr.push_back(valor);
 		}
 	fin.close();
 	fin.open("Carasy_malla.dat");
 		valor = 0;
-		vector<float> yfr;
+		vector<double> yfr;
 		while (fin >> valor){
 			yfr.push_back(valor);
 		}
 	fin.close();
 	fin.open("Propiedades.dat");
 		valor = 0;
-		vector<float> kappa;
+		vector<double> kappa;
 		while (fin >> valor){
 			kappa.push_back(valor);
 		}
 	fin.close();
 	fin.open("Term_src.dat");
-		float B;
+		double B;
 		fin >> B;
 	fin.close();
 	fin.open("Fronteras_vrbls.dat");
 		valor = 0;
-		vector<float> BC_S;
+		vector<double> BC_S;
 		while (fin >> valor){
 			BC_S.push_back(valor);
 		}
 	fin.close();
 	fin.open("Fronteras_ctes.dat");
 		valor= 0;
-		vector<float> BC;
+		vector<double> BC;
 		while (fin >> valor){
 			BC.push_back(valor);
 		}
-		float BC_E = BC[0];
-		float BC_N = BC[1];
-		float BC_W = BC[2];
+		double BC_E = BC[0];
+		double BC_N = BC[1];
+		double BC_W = BC[2];
 	fin.close();
 	// Definición de variables:
-	float epsilon = 5e-4; // [-] Criterio de convergencia
-	vector<vector<float>> Coef(xcr.size() * ycr.size(), vector<float> (6)); // Matriz de coeficientes y términos independientes
-	vector<vector<float>> A(xcr.size() * ycr.size(), vector<float> (5)); // Matriz de coeficientes de las celdas y sus vecinos
-	vector<float> Q(xcr.size() * ycr.size()); // Vector de términos independientes para cada celda
-	vector<vector<float>> Result; // Matriz de temperatura, iteraciones y residuos normalizados
-	vector<float> T(xcr.size() * ycr.size(),10); // [°C] Vector de temperaturas con initial guess = 10
-	vector<float> it_V; // Vector de iteraciones
-	vector<float> Rn_V; // Vector de residuos normalizados
+	double epsilon = 1.5e-4; // [-] Criterio de convergencia
+	vector<vector<double>> Coef(xcr.size() * ycr.size(), vector<double> (6)); // Matriz de coeficientes y términos independientes
+	vector<vector<double>> A(xcr.size() * ycr.size(), vector<double> (5)); // Matriz de coeficientes de las celdas y sus vecinos
+	vector<double> Q(xcr.size() * ycr.size()); // Vector de términos independientes para cada celda
+	vector<vector<double>> Result; // Matriz de temperatura, iteraciones y residuos normalizados
+	vector<double> T(xcr.size() * ycr.size(),10); // [°C] Vector de temperaturas con initial guess = 10
+	vector<double> it_V; // Vector de iteraciones
+	vector<double> Rn_V; // Vector de residuos normalizados
 	// Llamado de las funciones:
 	Coef = Coeficientes(xcr, ycr, xfr, yfr, kappa, B);
 	for (int i = 0; i < Q.size(); i++){
