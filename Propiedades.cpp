@@ -2,20 +2,31 @@
 #include <cstdlib>
 #include <cmath>
 #include <fstream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int main(){
+	// Recopilación de información:
+	ifstream fin;
+	fin.open("Celdasx_malla.dat");
+		float valor;
+		vector<float> xcr;
+		while (fin >> valor){
+			xcr.push_back(valor);
+		}
+	fin.close();
 	// Propiedades del material:
-	float kappa = 1;	// [W/(m*s)]
-	float C = 1;		// [J/(kg*m)]
-	float rho = 1;		// [kg/(m³)]
-	float alfa = k/(rho*C);// [m²/s]
-	ofstream file;
-	file.open("Propiedades.dat");
-		file << "kappa [W/(m*s)]" << "\t" << "C [J/(kg*m)]" << "\t" << "rho [kg/(m³)]" << "\t" << "alfa [m²/s]" << endl;
-		file << kappa << "\t" << C << "\t" << rho << "\t" << alfa << endl;
-	file.close();
-	
+	vector<float> kappa(xcr.size());	// [W/(m*s)]
+	for (int i = 0; i < xcr.size(); i++){
+		kappa[i] = 2 * (2.5 - xcr[i] / xcr[xcr.size() - 1]);
+	}
+	ofstream fout;
+	fout.open("Propiedades.dat");
+		for (int i = 0; i < kappa.size(); i++){
+			fout << kappa[i] << endl;
+		}
+	fout.close();
 	return 0;
 }
