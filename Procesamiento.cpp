@@ -165,10 +165,10 @@ vector<vector<double>> Gauss_Seidel(double BC_N, vector<double> &BC_S, double BC
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
 				}
 				else if (i == 0 && j == 0){ // Celda SW (Tipo 7)
-					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * BC_S[i] + Mat_A[nc][0] * T[nc]));
+					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * BC_S[i] + Mat_A[nc][0] * T[nc]));
 				}
 				else if (i == (nxcr - 1) && j == 0){ // Celda SE (Tipo 8)
-					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * BC_S[i] + Mat_A[nc][0] * T[nc]));
+					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * BC_S[i] + Mat_A[nc][0] * T[nc]));
 				}
 				else if ((i > 0 && i < (nxcr - 1)) && (j > 0 && j < (nycr - 1))){ // Celdas interiores (Tipo 9)
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
@@ -271,7 +271,7 @@ int main(){
 		double BC_W = BC[2];
 	fin.close();
 	// Definición de variables:
-	double epsilon = 1.5e-4; // [-] Criterio de convergencia
+	double epsilon = 1e-6; // [-] Criterio de convergencia
 	vector<vector<double>> Coef(xcr.size() * ycr.size(), vector<double> (6)); // Matriz de coeficientes y términos independientes
 	vector<vector<double>> A(xcr.size() * ycr.size(), vector<double> (5)); // Matriz de coeficientes de las celdas y sus vecinos
 	vector<double> Q(xcr.size() * ycr.size()); // Vector de términos independientes para cada celda

@@ -54,12 +54,12 @@ int main() {
 	double L = 3; // [m] Tamaño en x
 	double H = 2; // [m] Tamaño en y
 	// Parámetros de la malla:
-	int ncx = 90; // [-] Número de celdas en x
-	int ncy = 60; // [-] Número de celdas en y
+	int ncx = 60; // [-] Número de celdas en x
+	int ncy = 40; // [-] Número de celdas en y
 	double Deltax_mean = L / double(ncx); // [m] Tamaño promedio de las celdas en x
 	double Deltay_mean = H / double(ncy); // [m] Tamaño promedio de las celdas en y
-	double Deltax = 0.4 * Deltax_mean; // [m] Tamaño mínimo de las celdas en x
-	double Deltay = 0.4 * Deltay_mean; // [m] Tamaño mínimo de las celdas en y
+	double Deltax = 0.25 * Deltax_mean; // [m] Tamaño mínimo de las celdas en x
+	double Deltay = 0.25 * Deltay_mean; // [m] Tamaño mínimo de las celdas en y
 	int nfx = ncx + 1; // [-] Número de caras en x
 	int nfy = ncy + 1; // [-] Número de caras en y
 	vector<double> px_int = {0, L}; // [m] Puntos de interés para refinar en dirección x
