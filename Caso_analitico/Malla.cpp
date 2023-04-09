@@ -62,7 +62,7 @@ int main() {
 	double Deltay = 0.25 * Deltay_mean; // [m] Tamaño mínimo de las celdas en y
 	int nfx = ncx + 1; // [-] Número de caras en x
 	int nfy = ncy + 1; // [-] Número de caras en y
-	vector<double> px_int = {0, L}; // [m] Puntos de interés para refinar en dirección x
+	vector<double> px_int = {L}; // [m] Puntos de interés para refinar en dirección x
 	vector<double> py_int = {0, H}; // [m] Puntos de interés para refinar en dirección y
 	// Creación de la malla:
 	vector<double> xfr = refinamiento(0, L, px_int, Deltax_mean, Deltax); // [m] Vector de caras en x con refinamiento

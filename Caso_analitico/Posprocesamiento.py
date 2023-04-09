@@ -81,9 +81,9 @@ print(f"Número de caras en y con refinamiento = {len(yfr)} y tamaño de celda p
 print(f"Vector de caras en y:\n{yfr}\n")
 
 plt.figure(figsize = (12, 8))
-plt.contourf(xcr, ycr, z, 30, cmap = 'inferno')
-plt.colorbar(label = 'Temperatura [°C]', ticks = np.linspace(np.min(T), np.max(T), 15))
-CS = plt.contour(xcr, ycr, z, 30, colors = 'k', linewidths = 0.5, linestyles = '--')
+plt.contourf(xcr, ycr, z, 20, cmap = 'inferno')
+plt.colorbar(label = 'Temperatura [°C]', ticks = np.linspace(np.min(T), np.max(T), 20))
+CS = plt.contour(xcr, ycr, z, 20, colors = 'k', linewidths = 0.5, linestyles = '--')
 plt.clabel(CS, inline = 1, fontsize = 9)
 plt.title(f"Distribución de temperatura en la placa en °C", y = 1.01)
 plt.xlabel('Longitud [m]')
