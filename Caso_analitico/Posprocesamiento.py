@@ -8,6 +8,9 @@ ycr = np.genfromtxt('Celdasy_malla.dat')
 xfr = np.genfromtxt('Carasx_malla.dat')
 yfr = np.genfromtxt('Carasy_malla.dat')
 T = np.genfromtxt('Temperatura.dat')
+x_analitica = np.genfromtxt('x_analitica.dat')
+y_analitica = np.genfromtxt('y_analitica.dat')
+Temp_analitica = np.genfromtxt('Temp_analitica.dat')
 info = np.genfromtxt('Residuo_norm.dat', delimiter = '\t')
 it_V = info[:,0]
 Rn_V = info[:,1]
@@ -79,6 +82,16 @@ print(f"\nNúmero de caras en x con refinamiento = {len(xfr)} y tamaño de celda
 print(f"Vector de caras en x:\n{xfr}\n")
 print(f"Número de caras en y con refinamiento = {len(yfr)} y tamaño de celda promedio = {np.mean(Dy):.4f}\n")
 print(f"Vector de caras en y:\n{yfr}\n")
+
+plt.figure(figsize = (12, 8))
+plt.contourf(x_analitica, y_analitica, Temp_analitica, 20, cmap = 'inferno')
+plt.colorbar(label = 'Temperatura [°C]', ticks = np.linspace(np.min(Temp_analitica), np.max(Temp_analitica), 20))
+CS = plt.contour(xcr, ycr, z, 20, colors = 'k', linewidths = 0.5, linestyles = '--')
+plt.clabel(CS, inline = 1, fontsize = 9)
+plt.title(f"Distribución de temperatura en la placa en °C [Solución analítica]", y = 1.01)
+plt.xlabel('Longitud [m]')
+plt.ylabel('Longitud [m]')
+plt.savefig("Dist_T_An.eps", format = 'eps')
 
 plt.figure(figsize = (12, 8))
 plt.contourf(xcr, ycr, z, 20, cmap = 'inferno')

@@ -254,7 +254,7 @@ int main(){
 		fin >> B;
 	fin.close();
 	fin.open("Fronteras_ctes.dat");
-		valor= 0;
+		valor = 0;
 		vector<double> BC;
 		while (fin >> valor){
 			BC.push_back(valor);

@@ -20,8 +20,8 @@ int main(){
 	// Condiciones de frontera:
 	double BC_E = 150; // [°C] Condición Dirichlet en la frontera este (Fila 1 Fronteras_ctes.dat)
 	double BC_N = 15; // [°C] Condición Dirichlet en la frontera norte (Fila 2 Fronteras_ctes.dat)
-	double BC_W = 15; // [°C] Condición Dirichlet en la frontera oeste (Fila 3 Fronteras_ctes.dat)
-	double BC_S = 15; // [°C] Condición Dirichlet en la frontera sur (Fila 4 Frotneras_ctes.dat)
+	double BC_W = BC_N; // [°C] Condición Dirichlet en la frontera oeste (Fila 3 Fronteras_ctes.dat)
+	double BC_S = BC_N; // [°C] Condición Dirichlet en la frontera sur (Fila 4 Frotneras_ctes.dat)
 	// Escritura de la información:
 	ofstream fout;
 	fout.open("Fronteras_ctes.dat");
