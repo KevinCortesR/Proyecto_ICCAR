@@ -1,4 +1,4 @@
-Malla.pdf Dist_T.pdf Residuales.pdf : Temperatura.dat Residuo_norm.dat Posprocesamiento.py
+Malla.eps Dist_T.eps Residuales.eps : Temperatura.dat Residuo_norm.dat Posprocesamiento.py
 	python3 Posprocesamiento.py
 Temperatura.dat Residuo_norm.dat : Procesamiento.exe
 	./Procesamiento.exe
