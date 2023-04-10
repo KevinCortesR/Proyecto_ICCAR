@@ -1,4 +1,4 @@
-Malla.eps Dist_T.eps Dist_T_An Residuales.eps : Temperatura.dat Residuo_norm.dat x_analitica.dat y_analitica.dat Temp_analitica.dat Posprocesamiento.py
+Malla.pdf Dist_T.pdf Dist_T_An.pdf Residuales.pdf : Temperatura.dat Residuo_norm.dat x_analitica.dat y_analitica.dat Temp_analitica.dat Posprocesamiento.py
 	python3 Posprocesamiento.py
 x_analitica.dat y_analitica.dat Temp_analitica.dat : Sol_analitica.exe
 	./Sol_analitica.exe

@@ -1,2 +1,2 @@
-Informe.pdf : Informe.tex Caso_interes/Malla.eps Caso_interes/Dist_T.eps Caso_interes/Residuales.eps Caso_analitico/Malla.eps Caso_analitico/Dist_T.eps Caso_analitico/Dist_T_An.eps Caso_analitico/Residuales.eps
+Informe.pdf : Informe.tex Caso_interes/Malla.pdf Caso_interes/Dist_T.pdf Caso_interes/Residuales.pdf Caso_analitico/Malla.pdf Caso_analitico/Dist_T.pdf Caso_analitico/Dist_T_An.pdf Caso_analitico/Residuales.pdf
 	pdflatex Informe.tex
