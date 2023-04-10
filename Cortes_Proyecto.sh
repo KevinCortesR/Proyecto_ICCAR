@@ -4,3 +4,4 @@ make -f Caso_analitico.mk
 cd ../Caso_interes/
 make -f Caso_interes.mk
 cd ../
+make -f Informe.mk
