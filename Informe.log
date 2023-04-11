@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.4.9)  10 APR 2023 22:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.4.9)  10 APR 2023 22:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -753,16 +753,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
 Package rerunfilecheck Info: File `Informe.out' has not changed.
 (rerunfilecheck)             Checksum: 5E122032C37A44915B0BDA02DCDBA947;698.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
  ) 
 Here is how much of TeX's memory you used:
  10518 strings out of 483121
  161207 string characters out of 5964355
- 448362 words of memory out of 5000000
+ 448434 words of memory out of 5000000
  25295 multiletter control sequences out of 15000+600000
  572100 words of font info for 107 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
@@ -780,7 +776,7 @@ cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on Informe.pdf (7 pages, 728200 bytes).
+Output written on Informe.pdf (7 pages, 728197 bytes).
 PDF statistics:
  673 PDF objects out of 1000 (max. 8388607)
  218 compressed objects within 3 object streams

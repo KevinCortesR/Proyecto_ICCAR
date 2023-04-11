@@ -4,11 +4,13 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
 
 // Para realizar un enmallado uniforme haga Delta = Delta_mean.
 vector<double> refinamiento(double lim_inf, double lim_sup, vector<double> &p_int, double Delta_mean, double Delta){
+	auto start = chrono::steady_clock::now();
 	vector<double> x_ref(1);
 	int nmc = ceil((lim_sup - lim_inf) / Delta_mean);
 	int cont = 1;
@@ -46,6 +48,9 @@ vector<double> refinamiento(double lim_inf, double lim_sup, vector<double> &p_in
 		x_ref.pop_back();
 	}
 	x_ref[x_ref.size() - 1] = lim_sup;
+	auto end = chrono::steady_clock::now();
+	chrono::duration<double> seconds = end - start;
+	cout << "Tiempo transcurrido: " << seconds.count() << " s" << endl;
 	return x_ref;
 }
 

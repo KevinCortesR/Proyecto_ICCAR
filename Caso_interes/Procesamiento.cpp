@@ -3,11 +3,13 @@
 #include <cmath>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
 // Función generadora de la matriz de coeficientes de los vecinos y de la celda y del vector de términos fuente:
 vector<vector<double>> Coeficientes(vector<double> &xcr, vector<double> &ycr, vector<double> &xfr, vector<double> &yfr, vector<double> &kappa, double B){
+	auto start = chrono::steady_clock::now();
 	int nxcr = xcr.size();
 	int nycr = ycr.size();
 	vector<vector<double>> Mat_A(nxcr * nycr, vector<double> (6)); // 0: A_P, 1: A_E, 2: A_N, 3: A_W, 4: A_S, 5: Q_P
@@ -88,11 +90,15 @@ vector<vector<double>> Coeficientes(vector<double> &xcr, vector<double> &ycr, ve
 			}
 		}
 	}
+	auto end = chrono::steady_clock::now();
+	chrono::duration<double> seconds = end - start;
+	cout << "Tiempo transcurrido: " << seconds.count() << " s" << endl;
 	return Mat_A;
 }
 
 // La función Gauss-Seidel barre la malla de izquierda a derecha yendo de abajo hacia arriba
 vector<vector<double>> Gauss_Seidel(double BC_N, vector<double> &BC_S, double BC_W, double BC_E, vector<double> &xcr, vector<double> &ycr, vector<vector<double>> &Mat_A, vector<double> &Vec_Q, vector<double> &T, double epsilon){
+	auto start = chrono::steady_clock::now();
 	int it = 0;
 	double Res_norm = 10 * epsilon;
 	double Res_norm_ant = 0;
@@ -185,9 +191,15 @@ vector<vector<double>> Gauss_Seidel(double BC_N, vector<double> &BC_S, double BC
 		Rn_V[it - 1] = Res_norm;
 		cout << "Iteración " << it << " con Residual Normalizado: " << Res_norm << endl;
 		if ((Res_norm_ant - Res_norm) < 1e-9 && (Res_norm_ant - Res_norm) >= 0){
+			auto end = chrono::steady_clock::now();
+			chrono::duration<double> seconds = end - start;
+			cout << "Tiempo transcurrido: " << seconds.count() << " s" << endl;
 			break;
 		}
 		else if ((Res_norm_ant - Res_norm) < 0 && it > 1000){
+			auto end = chrono::steady_clock::now();
+			chrono::duration<double> seconds = end - start;
+			cout << "Tiempo transcurrido: " << seconds.count() << " s" << endl;
 			break;
 		}
 	}
@@ -208,6 +220,9 @@ vector<vector<double>> Gauss_Seidel(double BC_N, vector<double> &BC_S, double BC
 		Result[i][1] = it_V[i];
 		Result[i][2] = Rn_V[i];
 	}
+	auto end = chrono::steady_clock::now();
+	chrono::duration<double> seconds = end - start;
+	cout << "Tiempo transcurrido: " << seconds.count() << " s" << endl;
 	return Result;
 }
 
