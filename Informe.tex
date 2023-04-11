@@ -29,7 +29,7 @@
 \maketitle
 
 \section{Introducción}
-El proyecto realizado para el primer módulo del curso \textit{introducción a la computación científica de alto rendimiento} es la implementación del método de volúmenes finitos (FVM por sus siglas en Inglés) para solucionar la ecuación de difusión en un problema de conducción de calor en una placa rectangular en estado estacionario.
+El proyecto realizado para el primer módulo del curso \textbf{introducción a la computación científica de alto rendimiento} es la implementación del método de volúmenes finitos (\textit{FVM} por sus siglas en Inglés) para solucionar la ecuación de difusión en un problema de conducción de calor en una placa rectangular en estado estacionario.
 
 Ahora bien, el flujo de trabajo llevado a cabo es:
 
@@ -42,7 +42,7 @@ Ahora bien, el flujo de trabajo llevado a cabo es:
 	\item Programación de la etapa de posprocesamiento: Obtención de las gráficas que muestran los resultados.
 \end{itemize}
 
-Cada vez que se obtuvo avances los archivos y casos fueron subidos a un repositorio de GitHub cuyo enlace es: \url{https://github.com/KevinCortesR/Proyecto_ICCAR.git}
+Cada vez que se obtuvo avances los archivos y casos fueron subidos a un repositorio de \textbf{GitHub} cuyo enlace es: \url{https://github.com/KevinCortesR/Proyecto_ICCAR.git}
 
 \vspace{1.5 cm}
 
@@ -233,10 +233,11 @@ Este problema tiene la solución analítica dada por:
 
 Para darle dimensiones de $^{\circ}\mathrm{C}$ se realizó el siguiente procedimiento:
 
-\begin{equation}
-    T(x,y)=(T_{max}-T_{min})\cdot T_{adimensional}(x,y) + T_{min}
+\begin{multline}
+    T(x,y)=\frac{T_{max}-T_{min}}{T_{adimensional}^{max}}\cdot T_{adimensional}(x,y)\\
+    + T_{min}
     \label{Sol_An}
-\end{equation}
+\end{multline}
 
 \section{Método iterativo Gauss-Seidel}
 
@@ -283,7 +284,9 @@ Dado que se decidió utilizar los métodos de salida del método anteriormente m
 \end{itemize}
 
 \section{Códigos}
-Los dos casos resueltos en este proyecto cuentan con los mismos archivos de código:
+Con el fin de automatizar el flujo de trabajo de los casos implementados, se utilizaron $3$ archivos \textit{makefile}, $1$ para cada caso y $1$ para la creación del archivo .pdf de este informe. Para ejecutar los archivos \textit{makefile} se hizo uso del \textit{script de Bash} con nombre \textbf{Cortes\_Proyecto.sh}. 
+
+Entonces, Los dos casos resueltos en este proyecto cuentan con los mismos archivos de código:
 
 \begin{itemize}
 	\item Malla.cpp: Este código tiene el dominio computacional y crea la malla sobre la que se va a trabajar con base en el número de celdas en $x$ y $y$ que se desea. También, tiene una función de refinamiento que permite hacer más fina la malla en secciones que el usuario considere que deberían tener más celdas.
@@ -295,8 +298,12 @@ Los dos casos resueltos en este proyecto cuentan con los mismos archivos de cód
 	
 Con el fin de poder trabajar con vectores y matrices a los que se les pueda modificar el número de elementos se hizo uso de la librería \textit{vector} y para trabajar con los archivos en formato .dat se utilizó la librería \textit{fstream}.
 
+\vspace{8 cm}
+
 \section{Resultados}
 \subsection{Caso con solución analítica}
+
+En esta parte se van a mostrar los resultados obtenidos de las soluciones analítica y numérica del problema de conducción de calor en la placa rectangular.
 
 \begin{figure}[H]
     \centering
@@ -305,12 +312,16 @@ Con el fin de poder trabajar con vectores y matrices a los que se les pueda modi
     \label{Malla_An_num}
 \end{figure}
 
+En la figura \ref{Malla_An_num} se puede ver la malla utilizada para resolver este problema, se puede apreciar que la malla tiene un refinamiento hacia la frontera este, la frontera norte y sur, ya que allí en las esquinas nor-este y sur-este son los lugares donde se concentran los mayores gradientes de temperatura y se acumulan las líneas isotermas.
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.25]{Caso_analitico/Dist_T_An.pdf}
     \caption{ \centering{Distribución de temperatura con la solución analítica}}
     \label{T_Sol_An}
 \end{figure}
+
+Ahora bien, en la imagen \ref{T_Sol_An} se ve la distribución de temperatura en la placa con la solución analítica; no obstante, hay que ser consiente de que esta tiene el error de truncamiento debido a que no se podía tener los infinitos términos de la serie, por lo que sólo se usaron $75$ términos.
 
 \begin{figure}[H]
     \centering
@@ -319,6 +330,8 @@ Con el fin de poder trabajar con vectores y matrices a los que se les pueda modi
     \label{T_Sol_An_num}
 \end{figure}
 
+Por otra parte, en la figura \ref{T_Sol_An_num} se puede observar la distribución de temperatura en la placa con la solución numérica.
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{Caso_analitico/Residuales.pdf}
@@ -326,10 +339,55 @@ Con el fin de poder trabajar con vectores y matrices a los que se les pueda modi
     \label{Res_An_num}
 \end{figure}
 
+En este problema, el residual normalizado tuvo el comportamiento expuesto en la figura \ref{Res_An_num}, alcanzando las $2226$ iteraciones con un residual normalizado de $3.081\cdot 10^{-7}$. Por lo tanto, el problema no alcanzó el criterio de convergencia, pero la curva llegó a cambiar menos que $1\cdot 10^{-9}$ y salió del método iterativo.
+
 \subsection{Caso de interés}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{Caso_interes/Malla.pdf}
+    \caption{ \centering{Malla utilizada para el caso de interés}}
+    \label{Malla_int}
+\end{figure}
+
+En la figura \ref{Malla_int} se puede apreciar la malla utilizada para resolver este caso. Es posible ver el refinamiento que hay hacia las esquinas inferiores y en general en la frontera sur, ya que en esa región es donde está la frontera de tipo Dirchlet que cambia con la función $sin(x)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{Caso_interes/Dist_T.pdf}
+    \caption{ \centering{Distribución de temperatura con la solución numérica}}
+    \label{T_int}
+\end{figure}
+
+Así pues, en la figura \ref{T_int} se puede observar la distribución de temperatura en la placa del problema de interés. Se aprecia cómo se aglomeran las isotermas en la frontera sur y las esquinas sur-este y sur-oeste.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{Caso_interes/Residuales.pdf}
+    \caption{ \centering{Residual normalizado de la solución numérica del caso de interés}}
+    \label{Res_int}
+\end{figure}
+
+En este caso, el residual normalizado se comportó de la forma en que muestra la figura \ref{Res_int}, alcanzando las $3701$ iteraciones con un residual normalizado de $6.667\cdot 10^{-7}$. Entonces, la curva llegó a tener una variación menor que $1\cdot 10^{-9}$, por lo que salió del ciclo \textit{while} de la función del método iterativo de Gauss-Seidel.
 
 \section{Conclusiones}
 
-\section{Bibliografía}
+\begin{itemize}
+	\item El método \textit{FVM} mostró ser apto para resolver numéricamente problemas relacionados con la ecuación de difusión.
+	\item El método iterativo Gauss-Seidel fue correcto para la implementación en código, ya que es un método intuitivo y sencillo, no obstante es la zona de código que más toma tiempo al hacer el procesamiento. Sin embargo, el no haber hecho uso de librerías para este método permitió que se usaran los criterios de salida deseados, ya que no se quiso contar con el número de iteraciones para asumir que había convergido el método.
+	\item El uso de \textit{makefiles} en conjunto con el \textit{script de Bash} permitió automatizar la ejecución de todos los archivos de ambos casos, haciendo que el trabajo fuera bastante más rápido en comparación a ejecutar archivo por archivo y usando diferentes plataformas, por ejemplo si la escritura de este informe fuera en \textit{Overleaf}.
+\end{itemize}
+
+\section{Trabajo futuro}
+Pensando en el segundo módulo del curso \textbf{introducción a la computación científica de alto rendimiento}, es posible que se utilice un método iterativo más eficiente, que no tome tanto tiempo. Además, se desea implementar la paralelización para aumentar la velocidad de ejecución, por ejemplo en los ciclos \textit{for} en la creación de la malla, el cálculo de los coeficientes $a_i$ y en el método iterativo.
+
+\begin{thebibliography}{}
+\bibitem{C1} Benavides, A. \textit{CFD Finite Volume Method}, Computational Fluid Dynamics, 2023.
+\bibitem{C2} Versteeg, H \& Malalasekera, W. \textit{An Introduction to Computational Fluid Dynamics}, Second edition, 2007.
+\bibitem{C3} Wimshurst, A. \textit{Lecture Notes, Computational Fluid Dynamics}, Fundamentals Course 2, 2020.
+\bibitem{C4} “C++ variables de tipo vector,” Inicio. [Online]. Available: \url{https://aprende.olimpiada-informatica.org/cpp-vector}.
+\bibitem{C5} “2D vector in C++ with user defined size,” GeeksforGeeks, 10-Jan-2023. [Online]. Available: \url{https://www.geeksforgeeks.org/2d-vector-in-cpp-with-user-defined-size/}. 
+\bibitem{C6} “Reading in .DAT file, line by line,” C++ forum. [Online]. Available: \url{https://cplusplus.com/forum/beginner/117331/}. 
+\end{thebibliography}
 
 \end{document}

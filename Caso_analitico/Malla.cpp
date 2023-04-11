@@ -58,8 +58,8 @@ int main() {
 	int ncy = 50; // [-] Número de celdas en y
 	double Deltax_mean = L / double(ncx); // [m] Tamaño promedio de las celdas en x
 	double Deltay_mean = H / double(ncy); // [m] Tamaño promedio de las celdas en y
-	double Deltax = 0.25 * Deltax_mean; // [m] Tamaño mínimo de las celdas en x
-	double Deltay = 0.25 * Deltay_mean; // [m] Tamaño mínimo de las celdas en y
+	double Deltax = 0.2 * Deltax_mean; // [m] Tamaño mínimo de las celdas en x
+	double Deltay = 0.2 * Deltay_mean; // [m] Tamaño mínimo de las celdas en y
 	int nfx = ncx + 1; // [-] Número de caras en x
 	int nfy = ncy + 1; // [-] Número de caras en y
 	vector<double> px_int = {L}; // [m] Puntos de interés para refinar en dirección x

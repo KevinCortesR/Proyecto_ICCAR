@@ -47,8 +47,8 @@ vector<vector<double>> Coeficientes(vector<double> &xcr, vector<double> &ycr, ve
 				Mat_A[nc][5] = - B * (xfr[i + 1] - xfr[i]) * (yfr[j + 1] - yfr[j]);
 			}
 			else if (i == (nxcr - 1) && j == (nycr - 1)){ // Celda NE (Tipo 5)
-				Mat_A[nc][1] = kappa[i] * (yfr[j + 1] - yfr[j]) / (xfr[i + 1] - xcr[i]);
-				Mat_A[nc][2] = 0;
+				Mat_A[nc][1] = 0;
+				Mat_A[nc][2] = kappa[i] * (xfr[i + 1] - xfr[i]) / (yfr[j + 1] - ycr[j]);
 				Mat_A[nc][3] = kappa[i] * (yfr[j + 1] - yfr[j]) / (xcr[i] - xcr[i - 1]);
 				Mat_A[nc][4] = kappa[i] * (xfr[i + 1] - xfr[i]) / (ycr[j] - ycr[j - 1]);
 				Mat_A[nc][0] = - (Mat_A[nc][1] + Mat_A[nc][2] + Mat_A[nc][3] + Mat_A[nc][4]);
@@ -71,10 +71,10 @@ vector<vector<double>> Coeficientes(vector<double> &xcr, vector<double> &ycr, ve
 				Mat_A[nc][5] = - B * (xfr[i + 1] - xfr[i]) * (yfr[j + 1] - yfr[j]);
 			}
 			else if (i == (nxcr - 1) && j == 0){ // Celda SE (Tipo 8)
-				Mat_A[nc][1] = kappa[i] * (yfr[j + 1] - yfr[j]) / (xfr[i + 1] - xcr[i]);
+				Mat_A[nc][1] = 0;
 				Mat_A[nc][2] = kappa[i] * (xfr[i + 1] - xfr[i]) / (ycr[j + 1] - ycr[j]);
 				Mat_A[nc][3] = kappa[i] * (yfr[j + 1] - yfr[j]) / (xcr[i] - xcr[i - 1]);
-				Mat_A[nc][4] = 0;
+				Mat_A[nc][4] = kappa[i] * (xfr[i + 1] - xfr[i]) / (ycr[j] - yfr[j]);
 				Mat_A[nc][0] = - (Mat_A[nc][1] + Mat_A[nc][2] + Mat_A[nc][3] + Mat_A[nc][4]);
 				Mat_A[nc][5] = - B * (xfr[i + 1] - xfr[i]) * (yfr[j + 1] - yfr[j]);
 			}
@@ -123,7 +123,7 @@ vector<vector<double>> Gauss_Seidel(double BC_N, double BC_S, double BC_W, doubl
 					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S])) / Mat_A[nc][0];
 				}
 				else if (i == (nxcr - 1) && j == (nycr - 1)){ // Celda NE (Tipo 5)
-					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S])) / Mat_A[nc][0];
+					T[nc] = (Vec_Q[nc] - (Mat_A[nc][2] * BC_N + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S])) / Mat_A[nc][0];
 				}
 				else if (i == 0 && j == (nycr - 1)){ // Celda NW (Tipo 6)
 					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * BC_N + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * T[S])) / Mat_A[nc][0];
@@ -132,7 +132,7 @@ vector<vector<double>> Gauss_Seidel(double BC_N, double BC_S, double BC_W, doubl
 					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * BC_S)) / Mat_A[nc][0];
 				}
 				else if (i == (nxcr - 1) && j == 0){ // Celda SE (Tipo 8)
-					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W])) / Mat_A[nc][0];
+					T[nc] = (Vec_Q[nc] - (Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * BC_S)) / Mat_A[nc][0];
 				}
 				else if ((i > 0 && i < (nxcr - 1)) && (j > 0 && j < (nycr - 1))){ // Celdas interiores (Tipo 9)
 					T[nc] = (Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S])) / Mat_A[nc][0];
@@ -159,7 +159,7 @@ vector<vector<double>> Gauss_Seidel(double BC_N, double BC_S, double BC_W, doubl
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
 				}
 				else if (i == (nxcr - 1) && j == (nycr - 1)){ // Celda NE (Tipo 5)
-					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
+					R = R + abs(Vec_Q[nc] - (Mat_A[nc][2] * BC_N + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
 				}
 				else if (i == 0 && j == (nycr - 1)){ // Celda NW (Tipo 6)
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * BC_N + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));
@@ -168,7 +168,7 @@ vector<vector<double>> Gauss_Seidel(double BC_N, double BC_S, double BC_W, doubl
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * BC_W + Mat_A[nc][4] * BC_S + Mat_A[nc][0] * T[nc]));
 				}
 				else if (i == (nxcr - 1) && j == 0){ // Celda SE (Tipo 8)
-					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * BC_E + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][0] * T[nc]));
+					R = R + abs(Vec_Q[nc] - (Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * BC_S +  Mat_A[nc][0] * T[nc]));
 				}
 				else if ((i > 0 && i < (nxcr - 1)) && (j > 0 && j < (nycr - 1))){ // Celdas interiores (Tipo 9)
 					R = R + abs(Vec_Q[nc] - (Mat_A[nc][1] * T[E] + Mat_A[nc][2] * T[N] + Mat_A[nc][3] * T[W] + Mat_A[nc][4] * T[S] + Mat_A[nc][0] * T[nc]));

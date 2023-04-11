@@ -3,6 +3,7 @@
 #include <cmath>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -62,7 +63,13 @@ int main(){
 			}
 			T[p] = (2 / M_PI) * T_sum;
 			T_sum = 0;
-			T[p] = (T_max - T_min) * T[p] + T_min;
+		}
+	}
+	double T_ad_max = *max_element(T.begin(), T.end());
+	for (int i = 0; i < y.size(); i++){
+		for (int j = 0; j < x.size(); j++){
+			int p = i * x.size() + j;
+			T[p] = ((T_max - T_min) / T_ad_max) * T[p] + T_min;
 		}
 	}
 	// Escritura de la información:

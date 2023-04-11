@@ -63,7 +63,7 @@ int main() {
 	int nfx = ncx + 1; // [-] Número de caras en x
 	int nfy = ncy + 1; // [-] Número de caras en y
 	vector<double> px_int = {0, L}; // [m] Puntos de interés para refinar en dirección x
-	vector<double> py_int = {0, H}; // [m] Puntos de interés para refinar en dirección y
+	vector<double> py_int = {0, 0.07 * H}; // [m] Puntos de interés para refinar en dirección y
 	// Creación de la malla:
 	vector<double> xfr = refinamiento(0, L, px_int, Deltax_mean, Deltax); // [m] Vector de caras en x con refinamiento
 	vector<double> yfr = refinamiento(0, H, py_int, Deltay_mean, Deltay); // [m] Vector de caras en y con refinamiento

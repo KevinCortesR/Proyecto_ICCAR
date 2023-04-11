@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.4.9)  10 APR 2023 02:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.4.9)  10 APR 2023 22:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,7 +622,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<Prob_CFD1.png, id=49, 560.0925pt x 433.62pt>
+<Prob_CFD1.png, id=53, 560.0925pt x 433.62pt>
 File: Prob_CFD1.png Graphic file (type png)
 <use Prob_CFD1.png>
 Package pdftex.def Info: Prob_CFD1.png  used on input line 56.
@@ -636,7 +636,7 @@ Overfull \hbox (5.7238pt too wide) detected at line 90
 mm/m/it/10 BdV
  []
 
-<normales_celda.png, id=66, 704.742pt x 225.789pt>
+<normales_celda.png, id=71, 704.742pt x 225.789pt>
 File: normales_celda.png Graphic file (type png)
 <use normales_celda.png>
 Package pdftex.def Info: normales_celda.png  used on input line 109.
@@ -666,85 +666,107 @@ t/10 ^^^[]$
  []
 
 [3]
-Overfull \hbox (4.71849pt too wide) detected at line 239
-[]\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) = (
-\OML/cmm/m/it/10 T[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 T[]\OT1/cmr/m/n/10 )
- \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 T[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; 
-y\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 T[]
- []
-
-
-Underfull \hbox (badness 2735) in paragraph at lines 289--290
+Underfull \hbox (badness 2735) in paragraph at lines 292--293
 []\OT1/ptm/m/n/10 Malla.cpp: Es-te c[]odi-go tie-ne el do-mi-nio
  []
 
 [4]
-<Caso_analitico/Malla.pdf, id=112, 802.56209pt x 505.27647pt>
+<Caso_analitico/Malla.pdf, id=116, 802.56209pt x 505.27647pt>
 File: Caso_analitico/Malla.pdf Graphic file (type pdf)
 <use Caso_analitico/Malla.pdf>
-Package pdftex.def Info: Caso_analitico/Malla.pdf  used on input line 303.
+Package pdftex.def Info: Caso_analitico/Malla.pdf  used on input line 310.
 (pdftex.def)             Requested size: 200.64003pt x 126.3188pt.
-<Caso_analitico/Dist_T_An.pdf, id=113, 867.24pt x 578.16pt>
+<Caso_analitico/Dist_T_An.pdf, id=118, 867.24pt x 578.16pt>
 File: Caso_analitico/Dist_T_An.pdf Graphic file (type pdf)
 <use Caso_analitico/Dist_T_An.pdf>
-Package pdftex.def Info: Caso_analitico/Dist_T_An.pdf  used on input line 310.
+Package pdftex.def Info: Caso_analitico/Dist_T_An.pdf  used on input line 319.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (7.80716pt too wide) in paragraph at lines 310--311
+Overfull \hbox (7.80716pt too wide) in paragraph at lines 319--320
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<Caso_analitico/Dist_T.pdf, id=114, 867.24pt x 578.16pt>
+[5 <./Caso_analitico/Malla.pdf> <./Caso_analitico/Dist_T_An.pdf>]
+<Caso_analitico/Dist_T.pdf, id=291, 867.24pt x 578.16pt>
 File: Caso_analitico/Dist_T.pdf Graphic file (type pdf)
 <use Caso_analitico/Dist_T.pdf>
-Package pdftex.def Info: Caso_analitico/Dist_T.pdf  used on input line 317.
+Package pdftex.def Info: Caso_analitico/Dist_T.pdf  used on input line 328.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (7.80716pt too wide) in paragraph at lines 317--318
+Overfull \hbox (7.80716pt too wide) in paragraph at lines 328--329
  [][] 
  []
 
-<Caso_analitico/Residuales.pdf, id=115, 1084.05pt x 433.62pt>
+<Caso_analitico/Residuales.pdf, id=293, 1084.05pt x 433.62pt>
 File: Caso_analitico/Residuales.pdf Graphic file (type pdf)
 <use Caso_analitico/Residuales.pdf>
-Package pdftex.def Info: Caso_analitico/Residuales.pdf  used on input line 324.
+Package pdftex.def Info: Caso_analitico/Residuales.pdf  used on input line 337.
 
 (pdftex.def)             Requested size: 216.80615pt x 86.72246pt.
 
-Overfull \hbox (7.80385pt too wide) in paragraph at lines 324--325
+Overfull \hbox (7.80385pt too wide) in paragraph at lines 337--338
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
+<Caso_interes/Malla.pdf, id=295, 802.56209pt x 505.27647pt>
+File: Caso_interes/Malla.pdf Graphic file (type pdf)
+<use Caso_interes/Malla.pdf>
+Package pdftex.def Info: Caso_interes/Malla.pdf  used on input line 348.
+(pdftex.def)             Requested size: 200.64003pt x 126.3188pt.
 
-Underfull \vbox (badness 6725) has occurred while \output is active []
+Underfull \vbox (badness 7925) has occurred while \output is active []
 
- [5 <./Caso_analitico/Malla.pdf> <./Caso_analitico/Dist_T_An.pdf> <./Caso_anali
-tico/Dist_T.pdf> <./Caso_analitico/Residuales.pdf>] [6
+<Caso_interes/Dist_T.pdf, id=297, 867.24pt x 578.16pt>
+File: Caso_interes/Dist_T.pdf Graphic file (type pdf)
+<use Caso_interes/Dist_T.pdf>
+Package pdftex.def Info: Caso_interes/Dist_T.pdf  used on input line 357.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
- (./Informe.aux
+Overfull \hbox (7.80716pt too wide) in paragraph at lines 357--358
+ [][] 
+ []
+
+<Caso_interes/Residuales.pdf, id=299, 1084.05pt x 433.62pt>
+File: Caso_interes/Residuales.pdf Graphic file (type pdf)
+<use Caso_interes/Residuales.pdf>
+Package pdftex.def Info: Caso_interes/Residuales.pdf  used on input line 366.
+(pdftex.def)             Requested size: 216.80615pt x 86.72246pt.
+
+Overfull \hbox (7.80385pt too wide) in paragraph at lines 366--367
+ [][] 
+ []
+
+
+Underfull \vbox (badness 5446) has occurred while \output is active []
+
+ [6 <./Caso_analitico/Dist_T.pdf> <./Caso_analitico/Residuales.pdf> <./Caso_int
+eres/Malla.pdf> <./Caso_interes/Dist_T.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 393.
+ [7 <./Caso_interes/Residuales.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 393.
+
+(./Informe.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
 Package rerunfilecheck Info: File `Informe.out' has not changed.
-(rerunfilecheck)             Checksum: CE4A26098A3AA0308372717F63F14C4B;650.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 335.
+(rerunfilecheck)             Checksum: 5E122032C37A44915B0BDA02DCDBA947;698.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
  ) 
 Here is how much of TeX's memory you used:
- 10480 strings out of 483121
- 160515 string characters out of 5964355
- 448026 words of memory out of 5000000
- 25270 multiletter control sequences out of 15000+600000
- 570964 words of font info for 106 fonts, out of 8000000 for 9000
+ 10518 strings out of 483121
+ 161207 string characters out of 5964355
+ 448362 words of memory out of 5000000
+ 25295 multiletter control sequences out of 15000+600000
+ 572100 words of font info for 107 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 41i,15n,45p,553b,424s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,15n,45p,561b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -758,10 +780,10 @@ cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on Informe.pdf (6 pages, 586592 bytes).
+Output written on Informe.pdf (7 pages, 728200 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 142 words of extra memory for PDF output out of 10000 (max. 10000000)
 
