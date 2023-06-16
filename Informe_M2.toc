@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Objetivos específicos}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {2}Problema de interés}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Discretización}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Problema con solución analítica}{5}{section.3}%
+\contentsline {section}{\numberline {4}Método iterativo Gauss-Seidel}{6}{section.4}%
+\contentsline {section}{\numberline {5}Estado actual de los Códigos}{7}{section.5}%
+\contentsline {section}{\numberline {6}Resultados}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Caso con solución analítica}{8}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Caso de interés}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Caso de interés paralelizado}{11}{subsection.6.3}%

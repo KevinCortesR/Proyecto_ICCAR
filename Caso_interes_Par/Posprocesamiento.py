@@ -75,11 +75,6 @@ plt.xlabel("Longitud [m]")
 plt.ylabel("Longitud [m]")
 plt.savefig("Malla.pdf", format = 'pdf', bbox_inches='tight')
 
-print(f"\nNúmero de caras en x con refinamiento = {len(xfr)} y tamaño de celda promedio = {np.mean(Dx):.4f}\n")
-print(f"Vector de caras en x:\n{xfr}\n")
-print(f"Número de caras en y con refinamiento = {len(yfr)} y tamaño de celda promedio = {np.mean(Dy):.4f}\n")
-print(f"Vector de caras en y:\n{yfr}\n")
-
 plt.figure(figsize = (12, 8))
 plt.contourf(xcr, ycr, z, 30, cmap = 'inferno')
 plt.colorbar(label = 'Temperatura [°C]', ticks = np.linspace(np.min(T), np.max(T), 15))
@@ -100,4 +95,6 @@ plt.yscale('log')
 plt.grid()
 plt.savefig("Residuales.pdf", format = 'pdf')
 
+print(f"\nNúmero de caras en x con refinamiento = {len(xfr)} y tamaño de celda promedio = {np.mean(Dx):.4f}\n")
+print(f"Número de caras en y con refinamiento = {len(yfr)} y tamaño de celda promedio = {np.mean(Dy):.4f}\n")
 print(f"Última iteración: {it_V[len(it_V) - 1]:n} con residual normalizado: {Rn_V[len(Rn_V) - 1]:.10f}\n")
