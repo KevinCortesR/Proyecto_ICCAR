@@ -3,11 +3,11 @@ Malla.pdf Dist_T.pdf Dist_T_An.pdf Residuales.pdf : Temperatura.dat Residuo_norm
 x_analitica.dat y_analitica.dat Temp_analitica.dat : Sol_analitica.exe
 	./Sol_analitica.exe
 Sol_analitica.exe : Sol_analitica.cpp
-	g++ Sol_analitica.cpp -o Sol_analitica.exe
+	g++ -std=c++17 -O0 -fsanitize=address,undefined Sol_analitica.cpp -o Sol_analitica.exe
 Temperatura.dat Residuo_norm.dat : Procesamiento.exe
-	./Procesamiento.exe
+	./Procesamiento.exe 1
 Procesamiento.exe : Fronteras_ctes.dat Propiedades.dat Term_src.dat Procesamiento.cpp
-	g++ Procesamiento.cpp -o Procesamiento.exe
+	g++ -std=c++17 -O0 -fsanitize=address,undefined Procesamiento.cpp -o Procesamiento.exe
 Fronteras_ctes.dat : Frontera_t0.exe
 	./Frontera_t0.exe
 Frontera_t0.exe : Carasx_malla.dat Carasy_malla.dat Celdasx_malla.dat Celdasy_malla.dat Frontera_t0.cpp 
@@ -19,4 +19,4 @@ Propiedades.exe : Carasx_malla.dat Carasy_malla.dat Celdasx_malla.dat Celdasy_ma
 Carasx_malla.dat Carasy_malla.dat Celdasx_malla.dat Celdasy_malla.dat : Malla.exe
 	./Malla.exe
 Malla.exe : Malla.cpp
-	g++ Malla.cpp -o Malla.exe
+	g++ -std=c++17 -O0 -fsanitize=address,undefined Malla.cpp -o Malla.exe

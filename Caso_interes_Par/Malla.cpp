@@ -249,12 +249,12 @@ int main(int argc, char ** argv) {
   int ncy = 120; // [-] Número de celdas en y
   double Deltax_max = L / double(ncx); // [m] Tamaño máximo de las celdas en x
   double Deltay_max = H / double(ncy); // [m] Tamaño máximo de las celdas en y
-  double Deltax = 1 * Deltax_max; // [m] Tamaño mínimo de las celdas en x
-  double Deltay = 1 * Deltay_max; // [m] Tamaño mínimo de las celdas en y
+  double Deltax = 0.25 * Deltax_max; // [m] Tamaño mínimo de las celdas en x
+  double Deltay = 0.25 * Deltay_max; // [m] Tamaño mínimo de las celdas en y
   int nfx = ncx + 1; // [-] Número de caras en x
   int nfy = ncy + 1; // [-] Número de caras en y
   Eigen::VectorXd px_int {{0, L}}; // [m] Puntos de interés para refinar en dirección x
-  Eigen::VectorXd py_int {{0, 0.05 * H, H}}; // [m] Puntos de interés para refinar en dirección y
+  Eigen::VectorXd py_int {{0, 0.05 * H}}; // [m] Puntos de interés para refinar en dirección y
   // Creación de la malla:
   Eigen::VectorXd xfr = refinamiento(0, L, px_int, Deltax_max, Deltax); // [m] Vector de caras en x con refinamiento
   Eigen::VectorXd yfr = refinamiento(0, H, py_int, Deltay_max, Deltay); // [m] Vector de caras en y con refinamiento

@@ -286,7 +286,7 @@ int main(){
 		double BC_W = BC[2];
 	fin.close();
 	// Definición de variables:
-	double epsilon = 1e-7; // [-] Criterio de convergencia
+	double epsilon = 5e-6; // [-] Criterio de convergencia
 	vector<vector<double>> Coef(xcr.size() * ycr.size(), vector<double> (6)); // Matriz de coeficientes y términos independientes
 	vector<vector<double>> A(xcr.size() * ycr.size(), vector<double> (5)); // Matriz de coeficientes de las celdas y sus vecinos
 	vector<double> Q(xcr.size() * ycr.size()); // Vector de términos independientes para cada celda

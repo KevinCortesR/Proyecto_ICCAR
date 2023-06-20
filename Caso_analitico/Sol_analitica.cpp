@@ -23,8 +23,8 @@ int main(){
 	double L = 3; // [m] Tamaño en x
 	double H = 2; // [m] Tamaño en y
 	// Dominio para la solución analítica:
-	int nx = 80; // [-] Divisiones en x
-	int ny = 80; // [-] Divisiones en y
+	int nx = 180; // [-] Divisiones en x
+	int ny = 120; // [-] Divisiones en y
 	double dx = L / double(nx); // [m] Paso en x
 	double dy = H / double(ny); // [m] Paso en y
 	vector<double> x(nx + 1); // [m] Vector de longitud en x
@@ -90,7 +90,7 @@ int main(){
 				int p = i * x.size() + j;
 				fout << T[p] << "\t"; 
 			}
-			fout << endl;
+			fout << "\n";
 		}
 	fout.close();
 }

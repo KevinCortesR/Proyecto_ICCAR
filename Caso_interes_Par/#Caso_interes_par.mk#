@@ -1,7 +1,7 @@
 Malla_par.pdf Dist_T_par.pdf Residuales_par.pdf : Temperatura.dat Residuo_norm.dat Posprocesamiento.py
 	python3 Posprocesamiento.py
 Temperatura.dat Residuo_norm.dat : Procesamiento.exe
-	for thr in 9 10 11 12 13 14 15 16; do \
+	for thr in 1; do \
 		./Procesamiento.exe $$thr; \
 	done
 Procesamiento.exe : Fronteras_ctes.dat Fronteras_vrbls.dat Propiedades.dat Term_src.dat Procesamiento.cpp
