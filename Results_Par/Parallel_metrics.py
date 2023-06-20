@@ -1,0 +1,76 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Getting the info
+
+info_1 = np.genfromtxt('Parallel_time_prcss_O0.dat', delimiter = '\t')
+num_thr_1 = info_1[:,0]
+Wall_1 = info_1[:,1]
+CPU_1 = info_1[:,2]
+num_it_1 = info_1[:,3]
+
+info_3 = np.genfromtxt('Parallel_time_prcss_O3.dat', delimiter = '\t')
+num_thr_3 = info_3[:,0]
+Wall_3 = info_3[:,1]
+CPU_3 = info_3[:,2]
+num_it_3 = info_3[:,3]
+
+# Posprocessing
+
+Speedup_1 = np.zeros(len(num_thr_1))
+Par_eff_1 = np.zeros(len(num_thr_1))
+Speedup_3 = np.zeros(len(num_thr_3))
+Par_eff_3 = np.zeros(len(num_thr_3))
+
+for i in range(len(num_thr_1)):
+    Speedup_1[i] = Wall_1[0] / Wall_1[i]
+    Par_eff_1[i] = Speedup_1[i] / num_thr_1[i] * 100
+
+for i in range(len(num_thr_3)):
+    Speedup_3[i] = Wall_3[0] / Wall_3[i]
+    Par_eff_3[i] = Speedup_3[i] / num_thr_3[i] * 100
+        
+# Make the figures
+
+plt.figure(figsize = (10,8))
+plt.plot(num_thr_1, Wall_1, "-r", label = f"Wall -O1, 1 thr = {Wall_1[0]:.6f} s")
+plt.plot(num_thr_1, CPU_1, "--r", label = f"CPU -O1, 1 thr = {CPU_1[0]:.6f} s")
+plt.plot(num_thr_3, Wall_3, "-b", label = f"Wall -O3, 1 thr = {Wall_3[0]:.6f} s")
+plt.plot(num_thr_3, CPU_3, "--b", label = f"CPU -O3, 1 thr = {CPU_3[0]:.6f} s")
+plt.title('Time Comparison for -O0 and -O3')
+plt.legend(bbox_to_anchor = (1.04, 1), borderaxespad = 0)
+plt.xlabel('Number of Threads [-]')
+plt.ylabel('Normalized Time [-]')
+plt.yscale('log')
+plt.grid()
+plt.savefig("Time_Comparison.pdf", format = 'pdf', bbox_inches='tight')
+
+plt.figure(figsize = (10,8))
+plt.plot(num_thr_1, Speedup_1, "-r", label = f"Speedup -O0")
+plt.plot(num_thr_3, Speedup_3, "-b", label = f"Speedup -O3")
+plt.title('Speedup for -O0 and -O3')
+plt.legend(bbox_to_anchor = (1.04, 1), borderaxespad = 0)
+plt.xlabel('Number of Threads [-]')
+plt.ylabel('Speedup [-]')
+plt.grid()
+plt.savefig("Speedup.pdf", format = 'pdf', bbox_inches='tight')
+
+plt.figure(figsize = (10,8))
+plt.plot(num_thr_1, Par_eff_1, "-r", label = f"Parallel Efficiency -O1")
+plt.plot(num_thr_3, Par_eff_3, "-b", label = f"Parallel Efficiency -O3")
+plt.title('Parallel Efficiency for -O0 and -O3')
+plt.legend(bbox_to_anchor = (1.04, 1), borderaxespad = 0)
+plt.xlabel('Number of Threads [-]')
+plt.ylabel('Parallel Efficiency [%]')
+plt.grid()
+plt.savefig("Par_eff.pdf", format = 'pdf', bbox_inches='tight')
+
+plt.figure(figsize = (10,8))
+plt.plot(num_thr_1, num_it_1, "-r", label = f"-O1")
+plt.plot(num_thr_3, num_it_3, "-b", label = f"-O3")
+plt.title('Number of iterations to converge for -O0 and -O3')
+plt.legend(bbox_to_anchor = (1.04, 1), borderaxespad = 0)
+plt.xlabel('Number of Threads [-]')
+plt.ylabel('Number of iterations [-]')
+plt.grid()
+plt.savefig("Iterations.pdf", format = 'pdf', bbox_inches='tight')

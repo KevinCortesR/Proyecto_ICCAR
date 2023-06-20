@@ -1,0 +1,2 @@
+Time_Comparison.pdf Speedup.pdf Par_eff.pdf Iterations.pdf: Parallel_time_prcss_O0.dat Parallel_time_prcss_O3.dat Parallel_metrics Parallel_metrics.py
+	python3 Parallel_metrics.py
